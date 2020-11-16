@@ -19,18 +19,18 @@ namespace Kaffemaskinen
         {
             get { return volume; }
             set  
-            { 
-                if (value <= capacity)
-                {
-                    volume += value;
-                }
-                else if (value < 0)
+            {
+                if (value < 0)
                 {
                     volume = 0;
                 }
-                else 
+                else if (value >= capacity)
                 {
                     volume = capacity;
+                }
+                else
+                {
+                    volume = value;
                 }
             }
         }

@@ -29,7 +29,6 @@ namespace Kaffemaskinen
 
         public void EmptyContainer()
         {
-            Console.WriteLine("I HAZ NO FILTER");
             Volume = 0;
             hasFilter = false;
         }

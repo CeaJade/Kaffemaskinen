@@ -37,7 +37,37 @@ namespace Kaffemaskinen
 
         public string Brew()
         {
-            return "I am brewing";
+            string returnString;
+            decimal fVolume = filterBasket.Volume;
+            decimal wVolume = waterReservoir.Volume;
+            decimal coffeeStrength = fVolume / (wVolume / 2);
+            coffeeStrength = Math.Round(coffeeStrength, 2);
+            if (filterBasket.Volume == 0 && waterReservoir.Volume == 0)
+            {
+                returnString = "There is no water or coffee";
+            }
+            else if (filterBasket.Volume == 0)
+            {
+                returnString = waterReservoir.Volume / 2 + " cups of water";
+            }
+            else if (waterReservoir.Volume == 0)
+            {
+                returnString = "These are 0 cups of very dry coffee";
+            }
+            else if (filterBasket.HasFilter == false)
+            {
+                returnString = waterReservoir.Volume / 2 + " cups of grainy coffee with a strength of "
+                    + coffeeStrength + " have been brewed.";
+            }
+            else
+            {
+                returnString = waterReservoir.Volume / 2 + " cups of coffee with a strength of "
+                    + coffeeStrength + " have been brewed.";
+            }
+
+            waterReservoir.EmptyContainer();
+            filterBasket.EmptyContainer();
+            return returnString;
         }
 
         public int GetWaterReservoirCapacity()
@@ -45,9 +75,19 @@ namespace Kaffemaskinen
             return waterReservoir.Capacity;
         }
 
+        public int GetWaterreservoirVolume()
+        {
+            return waterReservoir.Volume;
+        }
+
         public int GetFilterBasketCapacity()
         {
             return filterBasket.Capacity;
+        }
+
+        public int GetFilterBasketVolume()
+        {
+            return filterBasket.Volume;
         }
     }
 }
