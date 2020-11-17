@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Kaffemaskinen
 {
+    //This class is responsible for containing a filter
     class FilterBasket : Container, IEmpiableContainer
     {
         private bool hasFilter;
@@ -22,7 +23,6 @@ namespace Kaffemaskinen
         {
             if (!hasFilter)
             {
-                Console.WriteLine("I HAZ FILTER");
                 hasFilter = true;
             }
         }

@@ -15,8 +15,8 @@ namespace Kaffemaskinen
                 do
                 {
                     Console.WriteLine("BREWING MACHINE\n");
-                    Console.Write("1. Fill Reservoir \n2. Insert filter \n3. Add coffee \n4. Brew \nInput: ");
-                    if (!int.TryParse(Console.ReadLine(), out input) || input > 4 || input <= 0)
+                    Console.Write("1. Fill Reservoir \n2. Insert filter \n3. Add coffee \n4. Brew Coffee \n5. Brew Tea \nInput: ");
+                    if (!int.TryParse(Console.ReadLine(), out input) || input > 5 || input <= 0)
                     {
                         Console.WriteLine("Invalid input");
                         Console.ReadKey();
@@ -33,13 +33,17 @@ namespace Kaffemaskinen
                         FillWaterReservoir(brewingMachine);
                         break;
                     case 2:
+                        Console.WriteLine("Filter has been inserted");
                         brewingMachine.FilterBasket.GetFilter();
                         break;
                     case 3:
                         FillCoffeePowder(brewingMachine);
                         break;
                     case 4:
-                        Console.WriteLine(brewingMachine.Brew());
+                        Console.WriteLine(brewingMachine.BrewCoffee());
+                        break;
+                    case 5:
+                        Console.WriteLine(brewingMachine.BrewTea());
                         break;
                 }
                 Console.ReadKey();
@@ -65,7 +69,7 @@ namespace Kaffemaskinen
             } while (!valid);
 
             brewingMachine.WaterReservoir.FillContainer(fillAmount);
-            Console.WriteLine(brewingMachine.GetWaterreservoirVolume() + " dl of water has been added.");
+            Console.WriteLine("There's " + brewingMachine.GetWaterreservoirVolume() + " dl of water in the reservoir");
         }
 
         public static void FillCoffeePowder(BrewingMachine brewingMachine)
@@ -86,7 +90,7 @@ namespace Kaffemaskinen
             } while (!valid);
 
             brewingMachine.FilterBasket.FillContainer(fillAmount);
-            Console.WriteLine(brewingMachine.GetFilterBasketVolume() + " spoons of coffee powder has been added.");
+            Console.WriteLine("There's " + brewingMachine.GetFilterBasketVolume() + " spoons of coffee powder in the filter basket.");
         }
     }
 }

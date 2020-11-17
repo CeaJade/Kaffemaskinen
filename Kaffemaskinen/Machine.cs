@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Kaffemaskinen
 {
+    //Represents a machine that can turn on and off
     abstract class Machine
     {
         private bool isOn;

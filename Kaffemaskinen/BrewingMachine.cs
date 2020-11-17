@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Kaffemaskinen
 {
+    //This class is respolsible of brewing
     class BrewingMachine : Machine
     {
         private WaterReservoir waterReservoir;
@@ -35,7 +36,8 @@ namespace Kaffemaskinen
             IsRunning = false;
         }
 
-        public string Brew()
+        //Brews coffee
+        public string BrewCoffee()
         {
             string returnString;
             decimal fVolume = filterBasket.Volume;
@@ -67,6 +69,22 @@ namespace Kaffemaskinen
 
             waterReservoir.EmptyContainer();
             filterBasket.EmptyContainer();
+            return returnString;
+        }
+
+        //Brews tea
+        public string BrewTea()
+        {
+            string returnString;
+            if (waterReservoir.Volume == 0)
+            {
+                returnString = "There is no water";
+            }
+            else
+            {
+                returnString = waterReservoir.Volume / 2 + " cups of hot water has been made ready for tea";
+            }
+
             return returnString;
         }
 
